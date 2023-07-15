@@ -196,3 +196,4 @@ pygame.quit()
 #get rid of items with spaces
 #cyclops photo
 #remove items looking at wood cp10
+#roll 2 dice not 1 for initial stamina

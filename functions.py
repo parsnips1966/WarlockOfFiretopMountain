@@ -266,6 +266,7 @@ def fight(name: str, escape_round: int=99, rounds: int=99) -> bool:
     vars.monster_name = name
     round = 1
     vars.escape = round>=escape_round
+    wounded = False
     for i in range(rounds):
         if vars.hero[1] > 0:
             if vars.monster[1] > 0:
@@ -286,7 +287,8 @@ def fight(name: str, escape_round: int=99, rounds: int=99) -> bool:
                     else:
                         vars.monster[1] -= 2
                     story("You land a blow.", 1, vars.escape)
-                    wounded = True
+                    if name == "Crocodile":
+                        wounded = True
                 elif vars.hero_attack < monster_attack:
                     change_stats(1, 2, "subtract")
                     story("The " + name + " lands a blow.", 1, vars.escape)
