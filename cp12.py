@@ -70,7 +70,6 @@ def checkpoint_12():
             if vars.dice_num < 5:
                 story("You make it safely back to the south bank")
                 vars.checkpoint = 12
-                pass
             elif vars.dice_num > 4:
                 vars.piranhas = True
     elif vars.decision_79 == "BRIDGE":
@@ -83,13 +82,12 @@ def checkpoint_12():
             story("You kick with your limbs and slash with your weapons\nto keep them off until you reach the south bank.")
             vars.monster = [6, 5]
             if fight("Piranhas"):
-                vars.decision_83 = story("You manage to scramble out of the water andlie panting\non the south bank. You may eat provisions here. Will you?")
+                vars.decision_83 = story("You manage to scramble out of the water and lie panting\non the south bank. You may eat provisions here. Will you?")
                 if vars.decision_83 == "YES":
                     take_provs()
                     vars.decision_83 == "NO"
                 if vars.decision_83 == "NO":
                     vars.checkpoint = 12
-                    pass
         else:
             story("You regain your footing. In the middle of the river,\nthe bridge swings to and fro as it strains to take your weight.")
             story("The handrail comes away suddenly as you lean on it.\nRoll one die.")
@@ -120,7 +118,6 @@ def checkpoint_12():
                 change_stats(1, 1, "subtract")
                 story("You arrive exhausted and lose 1 stamina point.")
                 vars.checkpoint = 12
-                pass
             elif vars.decision_84 == "RISK":
                 story("A huge jaw opens in front of you. By the size of it,\nthe Crocodile you are swimming towards must be at least three metres long.")
                 story("The beast slaps its tail in the water and glides towards you.\nYou must fight two attack rounds.")
@@ -138,7 +135,6 @@ def checkpoint_12():
                         change_stats(0, 1)
                         change_stats(2, 2)
                         vars.checkpoint = 13
-                        pass
                 elif vars.decision_87 == "KEEP":
                     wounded = fight("Crocodile", rounds=1)
                     story("As the 'turbulence' surrounds you,\nyou can feel the jostlings of many small fish.")
@@ -168,8 +164,7 @@ def checkpoint_12():
             vars.decision_85 = story("You decide not to risk it and return to the south bank.\nYou may eat provisions on the south bank. Will you?")
             if vars.decision_85 == "YES":
                 take_provs()
-            vars.checkpoint = 12
-                
+            vars.checkpoint = 12                
 if vars.piranhas:
     story("You plunge into the river below. The water around you bristles with activity,\nas if an invisible hand is dropping unseen pebbles into the river.")
     story("You gulp - PIRANHAS! - and you begin to feel their sharp teeth biting into your flesh.")
@@ -182,4 +177,3 @@ if vars.piranhas:
             vars.decision_88 = "NO"
         if vars.decision_88 == "NO":
             vars.checkpoint = 12
-            pass

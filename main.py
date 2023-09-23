@@ -20,6 +20,11 @@ from cp10 import checkpoint_10
 from cp11 import checkpoint_11
 from cp12 import checkpoint_12
 from cp13 import checkpoint_13
+from cp14 import checkpoint_14
+from cp15 import checkpoint_15
+from cp16 import checkpoint_16
+from cp17 import checkpoint_17
+from cp18 import checkpoint_18
 from functions import *
 
 if __name__ != "__main__":
@@ -176,7 +181,12 @@ cp_funcs = {
     10: checkpoint_10,
     11: checkpoint_11,
     12: checkpoint_12,
-    13: checkpoint_13
+    13: checkpoint_13,
+    14: checkpoint_14,
+    15: checkpoint_15,
+    16: checkpoint_16,
+    17: checkpoint_17,
+    18: checkpoint_18
 }
 
 while True:
