@@ -1,5 +1,7 @@
 from functions import *
 import variables as vars
+
+
 def checkpoint_1():
     vars.background = "passage"
     vars.decision_2 = story("You enter the caverns of Firetop Mountain and within a few metres\nyou arrive at a junction, do you want to go EAST or WEST?")

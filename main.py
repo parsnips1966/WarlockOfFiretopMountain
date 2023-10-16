@@ -1,6 +1,6 @@
 """The main file which contains the storyline and calls all the functions."""
 
-from json import dumps, load
+from json import load
 
 import pygame
 from pygame.locals import *
@@ -190,12 +190,7 @@ cp_funcs = {
 }
 
 while True:
-    try:
-        cp_func = cp_funcs[vars.checkpoint]
-    except KeyError as e:
-        pass  # Handle error
-    else:
-        cp_func()
+    cp_funcs[vars.checkpoint]()
 
 pygame.quit()
 #add animations when changing stats
