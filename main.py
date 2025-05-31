@@ -1,11 +1,6 @@
 """The main file which contains the storyline and calls all the functions."""
 
-from json import load
-
-import pygame
-from pygame.locals import *
-
-import variables as vars
+import variables as v
 from cp0 import checkpoint_0
 from cp1 import checkpoint_1
 from cp2 import checkpoint_2
@@ -30,20 +25,21 @@ from functions import *
 if __name__ != "__main__":
     raise Exception
 
-vars.background = "mountain"
+v.background = "mountain"
 consts.screen.fill(consts.BLACK)
-surf = pygame.image.load(f"./images/{vars.background}.jpg").convert()
+surf = pygame.image.load(f"./images/{v.background}.jpg").convert()
 consts.screen.blit(surf, surf.get_rect())
-decision_1 = story("Welcome to The Warlock of Firetop Mountain.\nWould you like to create a NEW account or LOAD an existing one?")
+decision_1 = story("Welcome to The Warlock of Firetop Mountain.\nWould you like to create a NEW account or LOAD an"
+                   " existing one?")
 if decision_1 == "NEW":
     while True:
-        vars.profile_name = story("What would you like to call it?", any_input=True).lower()
+        v.profile_name = story("What would you like to call it?", any_input=True).lower()
         with open("profile_list.json", "r") as file:
             profile_list = load(file)
-        if vars.profile_name in profile_list:
+        if v.profile_name in profile_list:
             story("That account already exists.")
         else:
-            vars.checkpoint = 0
+            v.checkpoint = 0
             break
 elif decision_1 == "LOAD":
     with open("profile_list.json", "r") as file:
@@ -53,116 +49,116 @@ elif decision_1 == "LOAD":
         if account in profile_list["profiles"]:
             with open("profiles/" + account + ".json", "r") as file:
                 user_data = load(file)
-            vars.gold = user_data["gold"]
-            vars.provs = user_data["provs"]
-            vars.hero = user_data["hero"]
-            vars.init_hero = user_data["init_hero"]
-            vars.equipment = user_data["equipment"]
-            vars.river = user_data["river"]
-            vars.piranhas = user_data["piranhas"]
-            vars.fight_tuto_done = user_data["fight_tuto_done"]
-            vars.provs_tuto_done = user_data["provs_tuto_done"]
-            vars.checkpoint = user_data["checkpoint"]
-            vars.profile_name = user_data["profile_name"]
-            vars.decision_1 = user_data["decision_1"]
-            vars.decision_2 = user_data["decision_2"]
-            vars.decision_3 = user_data["decision_3"]
-            vars.decision_4 = user_data["decision_4"]
-            vars.decision_5 = user_data["decision_5"]
-            vars.decision_6 = user_data["decision_6"]
-            vars.decision_7 = user_data["decision_7"]
-            vars.decision_8 = user_data["decision_8"]
-            vars.decision_9 = user_data["decision_9"]
-            vars.decision_10 = user_data["decision_10"]
-            vars.decision_11 = user_data["decision_11"]
-            vars.decision_12 = user_data["decision_12"]
-            vars.decision_13 = user_data["decision_13"]
-            vars.decision_14 = user_data["decision_14"]
-            vars.decision_15 = user_data["decision_15"]
-            vars.decision_16 = user_data["decision_16"]
-            vars.decision_17 = user_data["decision_17"]
-            vars.decision_18 = user_data["decision_18"]
-            vars.decision_19 = user_data["decision_19"]
-            vars.decision_10 = user_data["decision_20"]
-            vars.decision_11 = user_data["decision_21"]
-            vars.decision_12 = user_data["decision_22"]
-            vars.decision_13 = user_data["decision_23"]
-            vars.decision_14 = user_data["decision_24"]
-            vars.decision_15 = user_data["decision_25"]
-            vars.decision_16 = user_data["decision_26"]
-            vars.decision_17 = user_data["decision_27"]
-            vars.decision_18 = user_data["decision_28"]
-            vars.decision_19 = user_data["decision_29"]
-            vars.decision_10 = user_data["decision_30"]
-            vars.decision_11 = user_data["decision_31"]
-            vars.decision_12 = user_data["decision_32"]
-            vars.decision_13 = user_data["decision_33"]
-            vars.decision_14 = user_data["decision_34"]
-            vars.decision_15 = user_data["decision_35"]
-            vars.decision_16 = user_data["decision_36"]
-            vars.decision_17 = user_data["decision_37"]
-            vars.decision_18 = user_data["decision_38"]
-            vars.decision_19 = user_data["decision_39"]
-            vars.decision_10 = user_data["decision_40"]
-            vars.decision_11 = user_data["decision_41"]
-            vars.decision_12 = user_data["decision_42"]
-            vars.decision_13 = user_data["decision_43"]
-            vars.decision_14 = user_data["decision_44"]
-            vars.decision_15 = user_data["decision_45"]
-            vars.decision_16 = user_data["decision_46"]
-            vars.decision_17 = user_data["decision_47"]
-            vars.decision_18 = user_data["decision_48"]
-            vars.decision_19 = user_data["decision_49"]
-            vars.decision_10 = user_data["decision_50"]
-            vars.decision_11 = user_data["decision_51"]
-            vars.decision_12 = user_data["decision_52"]
-            vars.decision_13 = user_data["decision_53"]
-            vars.decision_14 = user_data["decision_54"]
-            vars.decision_15 = user_data["decision_55"]
-            vars.decision_16 = user_data["decision_56"]
-            vars.decision_17 = user_data["decision_57"]
-            vars.decision_18 = user_data["decision_58"]
-            vars.decision_19 = user_data["decision_59"]
-            vars.decision_10 = user_data["decision_60"]
-            vars.decision_11 = user_data["decision_61"]
-            vars.decision_12 = user_data["decision_62"]
-            vars.decision_13 = user_data["decision_63"]
-            vars.decision_14 = user_data["decision_64"]
-            vars.decision_15 = user_data["decision_65"]
-            vars.decision_16 = user_data["decision_66"]
-            vars.decision_17 = user_data["decision_67"]
-            vars.decision_18 = user_data["decision_68"]
-            vars.decision_19 = user_data["decision_69"]
-            vars.decision_10 = user_data["decision_70"]
-            vars.decision_11 = user_data["decision_71"]
-            vars.decision_12 = user_data["decision_72"]
-            vars.decision_13 = user_data["decision_73"]
-            vars.decision_14 = user_data["decision_74"]
-            vars.decision_15 = user_data["decision_75"]
-            vars.decision_16 = user_data["decision_76"]
-            vars.decision_17 = user_data["decision_77"]
-            vars.decision_18 = user_data["decision_78"]
-            vars.decision_19 = user_data["decision_79"]
-            vars.decision_10 = user_data["decision_80"]
-            vars.decision_11 = user_data["decision_81"]
-            vars.decision_12 = user_data["decision_82"]
-            vars.decision_13 = user_data["decision_83"]
-            vars.decision_14 = user_data["decision_84"]
-            vars.decision_15 = user_data["decision_85"]
-            vars.decision_16 = user_data["decision_86"]
-            vars.decision_17 = user_data["decision_87"]
-            vars.decision_18 = user_data["decision_88"]
-            vars.decision_19 = user_data["decision_89"]
-            vars.decision_10 = user_data["decision_90"]
-            vars.decision_11 = user_data["decision_91"]
-            vars.decision_12 = user_data["decision_92"]
-            vars.decision_13 = user_data["decision_93"]
-            vars.decision_14 = user_data["decision_94"]
-            vars.decision_15 = user_data["decision_95"]
-            vars.decision_16 = user_data["decision_96"]
-            vars.decision_17 = user_data["decision_97"]
-            vars.decision_18 = user_data["decision_98"]
-            vars.decision_19 = user_data["decision_99"]
+            v.gold = user_data["gold"]
+            v.provs = user_data["provs"]
+            v.hero = user_data["hero"]
+            v.init_hero = user_data["init_hero"]
+            v.equipment = user_data["equipment"]
+            v.river = user_data["river"]
+            v.piranhas = user_data["piranhas"]
+            v.fight_tuto_done = user_data["fight_tuto_done"]
+            v.provs_tuto_done = user_data["provs_tuto_done"]
+            v.checkpoint = user_data["checkpoint"]
+            v.profile_name = user_data["profile_name"]
+            v.decision_1 = user_data["decision_1"]
+            v.decision_2 = user_data["decision_2"]
+            v.decision_3 = user_data["decision_3"]
+            v.decision_4 = user_data["decision_4"]
+            v.decision_5 = user_data["decision_5"]
+            v.decision_6 = user_data["decision_6"]
+            v.decision_7 = user_data["decision_7"]
+            v.decision_8 = user_data["decision_8"]
+            v.decision_9 = user_data["decision_9"]
+            v.decision_10 = user_data["decision_10"]
+            v.decision_11 = user_data["decision_11"]
+            v.decision_12 = user_data["decision_12"]
+            v.decision_13 = user_data["decision_13"]
+            v.decision_14 = user_data["decision_14"]
+            v.decision_15 = user_data["decision_15"]
+            v.decision_16 = user_data["decision_16"]
+            v.decision_17 = user_data["decision_17"]
+            v.decision_18 = user_data["decision_18"]
+            v.decision_19 = user_data["decision_19"]
+            v.decision_10 = user_data["decision_20"]
+            v.decision_11 = user_data["decision_21"]
+            v.decision_12 = user_data["decision_22"]
+            v.decision_13 = user_data["decision_23"]
+            v.decision_14 = user_data["decision_24"]
+            v.decision_15 = user_data["decision_25"]
+            v.decision_16 = user_data["decision_26"]
+            v.decision_17 = user_data["decision_27"]
+            v.decision_18 = user_data["decision_28"]
+            v.decision_19 = user_data["decision_29"]
+            v.decision_10 = user_data["decision_30"]
+            v.decision_11 = user_data["decision_31"]
+            v.decision_12 = user_data["decision_32"]
+            v.decision_13 = user_data["decision_33"]
+            v.decision_14 = user_data["decision_34"]
+            v.decision_15 = user_data["decision_35"]
+            v.decision_16 = user_data["decision_36"]
+            v.decision_17 = user_data["decision_37"]
+            v.decision_18 = user_data["decision_38"]
+            v.decision_19 = user_data["decision_39"]
+            v.decision_10 = user_data["decision_40"]
+            v.decision_11 = user_data["decision_41"]
+            v.decision_12 = user_data["decision_42"]
+            v.decision_13 = user_data["decision_43"]
+            v.decision_14 = user_data["decision_44"]
+            v.decision_15 = user_data["decision_45"]
+            v.decision_16 = user_data["decision_46"]
+            v.decision_17 = user_data["decision_47"]
+            v.decision_18 = user_data["decision_48"]
+            v.decision_19 = user_data["decision_49"]
+            v.decision_10 = user_data["decision_50"]
+            v.decision_11 = user_data["decision_51"]
+            v.decision_12 = user_data["decision_52"]
+            v.decision_13 = user_data["decision_53"]
+            v.decision_14 = user_data["decision_54"]
+            v.decision_15 = user_data["decision_55"]
+            v.decision_16 = user_data["decision_56"]
+            v.decision_17 = user_data["decision_57"]
+            v.decision_18 = user_data["decision_58"]
+            v.decision_19 = user_data["decision_59"]
+            v.decision_10 = user_data["decision_60"]
+            v.decision_11 = user_data["decision_61"]
+            v.decision_12 = user_data["decision_62"]
+            v.decision_13 = user_data["decision_63"]
+            v.decision_14 = user_data["decision_64"]
+            v.decision_15 = user_data["decision_65"]
+            v.decision_16 = user_data["decision_66"]
+            v.decision_17 = user_data["decision_67"]
+            v.decision_18 = user_data["decision_68"]
+            v.decision_19 = user_data["decision_69"]
+            v.decision_10 = user_data["decision_70"]
+            v.decision_11 = user_data["decision_71"]
+            v.decision_12 = user_data["decision_72"]
+            v.decision_13 = user_data["decision_73"]
+            v.decision_14 = user_data["decision_74"]
+            v.decision_15 = user_data["decision_75"]
+            v.decision_16 = user_data["decision_76"]
+            v.decision_17 = user_data["decision_77"]
+            v.decision_18 = user_data["decision_78"]
+            v.decision_19 = user_data["decision_79"]
+            v.decision_10 = user_data["decision_80"]
+            v.decision_11 = user_data["decision_81"]
+            v.decision_12 = user_data["decision_82"]
+            v.decision_13 = user_data["decision_83"]
+            v.decision_14 = user_data["decision_84"]
+            v.decision_15 = user_data["decision_85"]
+            v.decision_16 = user_data["decision_86"]
+            v.decision_17 = user_data["decision_87"]
+            v.decision_18 = user_data["decision_88"]
+            v.decision_19 = user_data["decision_89"]
+            v.decision_10 = user_data["decision_90"]
+            v.decision_11 = user_data["decision_91"]
+            v.decision_12 = user_data["decision_92"]
+            v.decision_13 = user_data["decision_93"]
+            v.decision_14 = user_data["decision_94"]
+            v.decision_15 = user_data["decision_95"]
+            v.decision_16 = user_data["decision_96"]
+            v.decision_17 = user_data["decision_97"]
+            v.decision_18 = user_data["decision_98"]
+            v.decision_19 = user_data["decision_99"]
             break
         else:
             story("That account doesn't exist.")
@@ -190,16 +186,15 @@ cp_funcs = {
 }
 
 while True:
-    cp_funcs[vars.checkpoint]()
+    cp_funcs[v.checkpoint]()
 
-pygame.quit()
-#add animations when changing stats
-#add sound
-#add more images
-#remove text box
-#make shield work
-#get rid of items with spaces
-#cyclops photo
-#remove items looking at wood cp10
-#roll 2 dice not 1 for initial stamina
-#remove item after vampire
+# add animations when changing stats
+# add sound
+# add more images
+# remove text box
+# make shield work
+# get rid of items with spaces
+# cyclops photo
+# remove items looking at wood cp10
+# roll 2 dice not 1 for initial stamina
+# remove item after vampire
