@@ -81,9 +81,9 @@ def checkpoint_10():
                 story("Both pieces of wood are Y-shaped and smooth,\nas if washed up from a river.")
                 vars.equipment.append("Pieces Of Wood")
                 vars.decision_78 = story("If you wish to take the pieces of wood you must\nchoose one item of equipment to leave behind. Which will you choose?")
-                while vars.decision_78 not in vars.equipment:
+                while vars.decision_78.title() not in vars.equipment:
                     vars.decision_78 = story("You don't have that. Which piece of equipment will you choose from your pack.")
-                vars.equipment.remove(vars.decision_17.title())
+                vars.equipment.remove(vars.decision_78.title())
                 vars.decision_77 = story("Will you either LEAVE through the north door or stay and examine the ROPE?")
             if vars.decision_77 == "ROPE":
                 story("You pick up the rope. It looks normal. In fact it looks as if\nit might be quite useful. You open your pack to put it in.")

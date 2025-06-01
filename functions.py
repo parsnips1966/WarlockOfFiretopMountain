@@ -8,9 +8,10 @@ import variables as vars
 import constants as consts
 from json import load, dumps, dump
 
+
 def fight_tuto() -> None:
     """Explains how fighting works the first time the player enters a battle."""
-    if vars.fight_tuto_done == False:
+    if not vars.fight_tuto_done:
         story("When fighting monsters, 2 dice will be rolled for the monster\nand added to its Skill score to determine its Attack Strength.")
         story("You will do the same and whoever has\nthe higher Attack Strength will land a blow.")
         story("If the values are equal then\nyou have avoided each others' Attacks.")
@@ -18,11 +19,13 @@ def fight_tuto() -> None:
         story("At some points you may be given the option of running away from a battle.\nIf you do the monster gets a hit on you as you flee.")
         vars.fight_tuto_done = True
 
-def provs_tuto() -> None:
+
+def provs_tuto():
     """Explains what Provisions do the first time a player encounters them."""
     if vars.provs_tuto_done == False:
         return " which restore 4 Stamina points"
     vars.provs_tuto_done = True
+
 
 def take_provs() -> None:
     """Changes stamina and removes a Provision"""
@@ -31,6 +34,7 @@ def take_provs() -> None:
         change_stats(1, 4)
     else:
         story("You have no Provisions left.")
+
 
 def story(txt: str, timer: int=0, escape: bool=False, any_input: bool=False) -> str:
     """
@@ -48,7 +52,7 @@ def story(txt: str, timer: int=0, escape: bool=False, any_input: bool=False) -> 
     consts.screen.blit(surf, surf.get_rect())
     for i in range(len(txt)):
         text = txt[i]
-        blit_text(text, -1, consts.height // 2 + (i * 30), 40, outline = True, centerx = True)
+        blit_text(text, -1, consts.height // 2 + (i * 30), 40, outline=True, centerx=True)
     if txt[-1][-1] == "?" or vars.escape:
         pygame.draw.rect(consts.screen, consts.BLACK, Rect(449, 509, 402, 62), 4)
         pygame.draw.rect(consts.screen, consts.WHITE, Rect(450, 510, 400, 60))
@@ -176,7 +180,8 @@ def story(txt: str, timer: int=0, escape: bool=False, any_input: bool=False) -> 
         if timer > 0:
             sleep(timer)
             return
-            
+
+
 def blit_text(txt: str, x: int, y: int, size: int=30, underline: bool=False, colour: tuple=(255, 255, 255), outline: bool=False, centerx: bool=False) -> None:
     """Blits text to the screen.
     :param txt: The text to blit to the screen.
@@ -240,6 +245,7 @@ def draw_dice(die_num: int, x: int=650, y: int=10) -> None:
         pygame.draw.circle(consts.screen, consts.BLACK, (x - 25, 225), y)
         pygame.draw.circle(consts.screen, consts.BLACK, (x + 25, 225), y)
 
+
 def change_stats(stat: int, amount: int, operation: str="") -> None:
     """Changes one of the player's stats by an amount.
     :param stat: The stat which will be changed.
@@ -256,6 +262,7 @@ def change_stats(stat: int, amount: int, operation: str="") -> None:
         vars.hero[stat] = vars.init_hero[stat]
         return
     vars.hero[stat] += amount
+
 
 def fight(name: str, escape_round: int=99, rounds: int=99) -> bool:
     """Controls fights between the player and a monster.
@@ -349,12 +356,14 @@ def autosave() -> None:
     with open("profile_list.json", "w") as file: 
         file.write(save)
 
+
 def enter_key_pressed():
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 print("enter pressed")
                 return True
+
 
 if __name__ == "__main__":
     raise Exception

@@ -39,7 +39,7 @@ def checkpoint_12():
                     if vars.escape:
                         story("You decide to escape and run over the rickety bridge.")
                         vars.decision_79 == "BRIDGE"
-                        vars.escape
+                        # vars.escape
                 elif vars.decision_81 == "OFFER":
                     vars.gold -= 5
                     vars.decision_80 = "PAY"

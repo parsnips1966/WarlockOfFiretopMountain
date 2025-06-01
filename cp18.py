@@ -2,8 +2,10 @@ from functions import *
 import variables as vars
 
 def checkpoint_18():
-    story("Your tappings and scratchings at the rock face as you search\nfor secret doors and passageways resound through the dungeon corridors.")
-    story("Various creatures roam freely through the underworld and your noises\nhave just attracted the attentions of one of the following monsters.")
+    story("Your tappings and scratchings at the rock face as you search\nfor secret doors and passageways resound "
+          "through the dungeon corridors.")
+    story("Various creatures roam freely through the underworld and your noises\nhave just attracted the attentions "
+          "of one of the following monsters.")
     story("Roll one die.")
     vars.dice_num = randint(1, 6)
     if vars.dice_num == 1:

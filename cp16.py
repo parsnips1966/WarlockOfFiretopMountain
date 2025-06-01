@@ -115,8 +115,6 @@ def checkpoint_16():
             story("The drawers are full of nails, tacks and miscellaneous bits and pieces.\nIn one drawer is a copper-coloured key, inscribed with the number 66 which looks interesting.")
             vars.equipment.append("Key 66")
             vars.decision_127 = story("If you wish to take this key, you must discard\none item of equipment you are carrying. Which will you discard?")
-            print(vars.decision_127.title())
-            print(vars.equipment)
             while vars.decision_127.title() not in vars.equipment:
                 vars.decision_127 = story("You don't have that. Which piece of\nequipment will you choose from your pack?")
             vars.equipment.remove(vars.decision_127.title())
@@ -131,8 +129,6 @@ def checkpoint_16():
                 elif vars.decision_129 == "CHISEL":
                     vars.equipment.append("Chisel")
                 vars.decision_130 = story("Which item will you discard from your pack?")
-                print(vars.decision_130.title())
-                print(vars.equipment)
                 while vars.decision_130.title() not in vars.equipment:
                     vars.decision_130 = story("You don't have that. Which piece of\nequipment will you choose from your pack?")
                 vars.equipment.remove(vars.decision_130.title())
@@ -158,18 +154,18 @@ def checkpoint_16():
             story("Something is not quite right. You landed a fair blow on him,\nbut he appears not to have noticed the wound!")
             story("You deduce that this Undead creature is not vulnerable to normal weapons.\nYou may choose a new weapon or use your current weapon.")
             story("Wights are vulnerable only to\nweapons made of solid silver.")
-            while vars.decision_135 not in vars.equipment:
+            while vars.decision_135.title() not in vars.equipment:
                 vars.decision_135 = story("Which item from your pack\ndo you choose?")
-                if vars.decision_135 not in vars.equipment:
+                if vars.decision_135.title() not in vars.equipment:
                     story("You don't have that.")
-            if vars.decision_135 == "CHISEL" or vars.decision_135 == "Bow And Arrow":
-                if vars.decision_135 == "BOW AND ARROW":
-                        if stat_test(2):
-                            story("You are lucky, you hit and the creature dies instantly.")
-                        else:
-                               story("You are unlucky. You miss.")
+            if vars.decision_135 == "BOW AND ARROW":
+                if stat_test(2):
+                    story("You are lucky, you hit and the creature dies instantly.")
+                else:
+                    story("You are unlucky. You miss.")
+            elif vars.decision_135 == "CHISEL":
                 story("Your weapon is made of solid silver.\nIf you wish to escape during the battle, you may do so.")
-                if fight("Wight"):#the creature wounds you 3 times
+                if fight("Wight"): # the creature wounds you 3 times
                     story("After you have suffered your third wound, you notice that your strength is ebbing.")
                     change_stats(0, 1)
                     story("You deduce that this is yet another magical power of this foul creature and you feel a shiver of panic.")
@@ -217,16 +213,16 @@ def checkpoint_16():
                 story("Something is not quite right. You landed a fair blow on him,\nbut he appears not to have noticed the wound!")
                 story("You deduce that this Undead creature is not vulnerable to normal weapons.\nYou may choose a new weapon or use your current weapon.")
                 story("Wights are vulnerable only to\nweapons made of solid silver.")
-                while vars.decision_135 not in vars.equipment:
+                while vars.decision_135.title() not in vars.equipment:
                     vars.decision_135 = story("Which item from your pack\ndo you choose?")
-                    if vars.decision_135 not in vars.equipment:
+                    if vars.decision_135.title() not in vars.equipment:
                         story("You don't have that.")
-                if vars.decision_135 == "CHISEL" or vars.decision_135 == "Bow And Arrow":
-                    if vars.decision_135 == "BOW AND ARROW":
-                            if stat_test(2):
-                                story("You are lucky, you hit and the creature dies instantly.")
-                            else:
-                                story("You are unlucky. You miss.")
+                if vars.decision_135 == "BOW AND ARROW":
+                    if stat_test(2):
+                        story("You are lucky, you hit and the creature dies instantly.")
+                    else:
+                        story("You are unlucky. You miss.")
+                elif vars.decision_135 == "CHISEL":
                     story("Your weapon is made of solid silver.\nIf you wish to escape during the battle, you may do so.")
                     if fight("Wight"):#if the creature wounds you 3 times:
                         story("After you have suffered your third wound, you notice that your strength is ebbing.")

@@ -142,8 +142,6 @@ def checkpoint_15():
                                         vars.equipment.append("Y-shaped stick")
                                         vars.equipment.append("book")
                                         vars.gold += 30
-                                        print(vars.decision_105.title())
-                                        print(vars.equipment)
                                         while vars.decision_105.title() not in vars.equipment:
                                             vars.decision_105 = story("You don't have that. Which piece of equipment will you choose from your pack?")
                                             vars.equipment.remove(vars.decision_105.title())
