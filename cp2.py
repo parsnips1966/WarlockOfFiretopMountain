@@ -1,6 +1,7 @@
 from functions import *
 import variables as vars
 
+
 def checkpoint_2():
     if vars.decision_4 == "YES":
         vars.background = "darkroom"
